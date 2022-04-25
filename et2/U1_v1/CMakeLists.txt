@@ -1,0 +1,9 @@
+cmake_minimum_required(VERSION 3.0.0)
+project(U1 VERSION 0.1.0)
+
+add_executable(U1 main.c)
+target_link_libraries(U1 PRIVATE m)
+
+set(CPACK_PROJECT_NAME ${PROJECT_NAME})
+set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
+include(CPack)
