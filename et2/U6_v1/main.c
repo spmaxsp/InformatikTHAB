@@ -13,7 +13,7 @@ bt* createNode(char value){
     return tmp_new;
 }
 
-void traversePreoder(bt* root) {   //should print A, B, D, E, C
+void traversePreoder(bt* root) {   //should print A, B, D, E, F, G, C
     if(root != NULL){
         printf("%c, ", root->val);
         traversePreoder(root->a);
@@ -22,19 +22,19 @@ void traversePreoder(bt* root) {   //should print A, B, D, E, C
     return;
 }
 
-void traverseInorder(bt* root) {  //B, D, E, A, C 
+void traverseInorder(bt* root) {  //D, B, E, F, G, A, C
     if(root != NULL){
-        traversePreoder(root->a);
+        traverseInorder(root->a);
         printf("%c, ", root->val);
-        traversePreoder(root->b);
+        traverseInorder(root->b);
     }
     return;
 }
 
-void traversePostorder(bt* root) { //B, D, E, C, A
+void traversePostorder(bt* root) { //D, G, F, E, B, C, A
     if(root != NULL){
-        traversePreoder(root->a);
-        traversePreoder(root->b);
+        traversePostorder(root->a);
+        traversePostorder(root->b);
         printf("%c, ", root->val);
     }
     return;
