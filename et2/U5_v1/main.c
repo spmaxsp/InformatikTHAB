@@ -83,7 +83,7 @@ int deleteList(myList** p_current){
 
 int printList(myList** p_current){
     if (*p_current == NULL){              // überprüfe ob head bereits auf null zeigt
-
+        return 0;
     }
     else {
         myList* current = *p_current;     //current ist nun die adresse auf die head zeigt
