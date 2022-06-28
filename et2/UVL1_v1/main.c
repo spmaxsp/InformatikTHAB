@@ -10,26 +10,7 @@ typedef struct person {
     unsigned int yob;
 } person;
 
-int create_parent(person** p_head, char nameofchild[], char name[], unsigned int gender, unsigned int yob, int father){
-    if(p_head == NULL){
-        return 1;
-    }
-    if(*p_head == NULL){
-        return 1;
-    }
-    if(!strcmp(nameofchild, (*p_head)->name)){
-        if (father){
-            return create_person(&((*p_head)->father), name, gender, yob);
-        }
-        else{
-            return create_person(&((*p_head)->mother), name, gender, yob);
-        }
-    }
-    create_parent(&((*p_head)->father), nameofchild, name, gender, yob, father);
-    create_parent(&((*p_head)->mother), nameofchild, name, gender, yob, father);
-}
-
-int create_person(person** p_head, char name[20], unsigned int gender, unsigned int yob){
+int create_person(person** p_head, char name[], unsigned int gender, unsigned int yob){
     if(p_head == NULL){
         return 1;
     }
@@ -51,6 +32,25 @@ int create_person(person** p_head, char name[20], unsigned int gender, unsigned 
     return 0;
 }
 
+int create_parent(person** p_head, char nameofchild[], char name[], unsigned int gender, unsigned int yob, int father){
+    if(p_head == NULL){
+        return 1;
+    }
+    if(*p_head == NULL){
+        return 1;
+    }
+    if(!strcmp(nameofchild, (*p_head)->name)){
+        if (father){
+            return create_person(&((*p_head)->father), name, gender, yob);
+        }
+        else{
+            return create_person(&((*p_head)->mother), name, gender, yob);
+        }
+    }
+    create_parent(&((*p_head)->father), nameofchild, name, gender, yob, father);
+    create_parent(&((*p_head)->mother), nameofchild, name, gender, yob, father);
+}
+
 int main(){
     person* head = NULL;
     if(create_person(&head, "Me", 1, 2000)){
@@ -65,5 +65,6 @@ int main(){
     if(create_person(&(head->father->mother), "MyFathersMother", 2, 1950)){
         return 1;
     }
+    create_parent(&head, "Me", "MyMother", 2, 1970, 0);
     return 0;
 }

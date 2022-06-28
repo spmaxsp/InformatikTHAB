@@ -1,7 +1,8 @@
 cmake_minimum_required(VERSION 3.0.0)
-project(U16 VERSION 0.1.0)
+cmake_minimum_required(VERSION 3.0.0)
+project(VL1 VERSION 0.1.0)
 
-add_executable(U16 main.c)
+add_executable(VL1 main.c)
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
